@@ -1,4 +1,4 @@
-namespace OnlineBookStore
+namespace OnlineBookStore.Models
 {
     public class Customer
     {
