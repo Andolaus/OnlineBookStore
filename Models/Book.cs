@@ -1,15 +1,40 @@
 namespace OnlineBookStore.Models
 {
+    /// <summary>
+    /// Class representing a book in a online book store.
+    /// </summary>
     public class Book
     {
+        /// <summary>
+        /// Gets or set the title of a book.
+        /// </summary>
         public string Title {get; set;}
+        /// <summary>
+        /// Gets or sets the author of a book.
+        /// </summary>
         public string AuthorName {get; set;}
+        /// <summary>
+        /// Gets or set the Interational Standard Book Number for a book.
+        /// </summary>
         public string Isbn {get; set;}
+        /// <summary>
+        /// Gets or sets the price of a book.
+        /// </summary>
         public decimal Price {get; set;}
+        /// <summary>
+        /// Gets or sets a boolean value to check if a book is on sale.
+        /// </summary>
         public bool IsBookOnSale {get; set;} = false;
-        public int QuantityInStock {get; private set;}
 
-        public Book(string title, string authorName, string isbn, int quantityInStock, decimal price)
+       /// <summary>
+       /// Initializez new instance of a book
+       /// </summary>
+       /// <param name="title">Title of the book</param>
+       /// <param name="authorName">Author name of the book.</param>
+       /// <param name="isbn">The International Standard Book Number for a book</param>
+       /// <param name="price">The price of the book</param>
+       /// <exception cref="ArgumentException">Throws argument when input fields are invalid</exception>
+        public Book(string title, string authorName, string isbn, decimal price)
         {
 
         if(string.IsNullOrWhiteSpace(title))
@@ -24,10 +49,6 @@ namespace OnlineBookStore.Models
         {
             throw new ArgumentException("ISBN cannot be null or empty", nameof(isbn));
         }
-        if(quantityInStock < 0)
-        {
-            throw new ArgumentException("Quantity in stock cannot be less than 0", nameof(quantityInStock));
-        }
         if(price < 0)
         {
             throw new ArgumentException("Price cannot be less than 0", nameof(price));
@@ -37,12 +58,17 @@ namespace OnlineBookStore.Models
         AuthorName = authorName;
         Isbn = isbn;
         Price = price;
-        QuantityInStock = quantityInStock;
         }
 
+        /// <summary>
+        /// Returns a description of a book with information about title, author, ISBN, price and if the book is on sale.
+        /// </summary>
+        /// <returns>
+        /// A string with information about the book.
+        /// </returns>
         public string GetDetailsAboutBook() 
         {
-            return $"Title: {Title}, Author: {AuthorName}, ISBN: {Isbn}, Price: {Price}, Stock: {QuantityInStock}, On Sale: {IsBookOnSale}";
+            return $"Title: {Title}, Author: {AuthorName}, ISBN: {Isbn}, Price: {Price}, On Sale: {IsBookOnSale}";
         }
 
     }
