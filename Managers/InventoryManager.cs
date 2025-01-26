@@ -1,4 +1,4 @@
 namespace OnlineBookStore.Managers 
 {
-
+    //Lagerstyring
 }
