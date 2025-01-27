@@ -1,4 +1,9 @@
 namespace OnlineBookStore.Managers 
 {
-    //Lagerstyring
+    public class InventoryManager 
+    {
+        private readonly Dictionary<string, int> _BookInventory = new();
+
+        
+    }
 }

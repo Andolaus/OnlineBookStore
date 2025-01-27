@@ -8,27 +8,27 @@ namespace OnlineBookStore.Models
         /// <summary>
         /// Gets unique ID for a customer.
         /// </summary>
-        public Guid CustomerID {get; private set;} 
+        public Guid CustomerID { get; private set; } 
         /// <summary>
         /// Gets or sets a customer's first name.
         /// </summary>
-        public string FirstName {get; set;}
+        public string FirstName { get; set; }
         /// <summary>
         /// Gets or sets a customer's middle name.
         /// </summary>
-        public string? MiddleName {get; set;}
+        public string? MiddleName { get; set; }
         /// <summary>
         /// Gets or sets a customer's last name.
         /// </summary>
-        public string LastName {get; set;}
+        public string LastName { get; set; }
         /// <summary>
         /// Gets or sets a customer's email address.
         /// </summary>
-        public string Email {get; set;}
+        public string Email { get; set; }
         /// <summary>
         /// Gets or sets a customer's phone number.
         /// </summary>
-        public string PhoneNumber {get; set;}
+        public string PhoneNumber { get; set; }
 
         /// <summary>
         /// Initializez new instance of a customer.

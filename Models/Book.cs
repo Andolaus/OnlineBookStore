@@ -8,23 +8,23 @@ namespace OnlineBookStore.Models
         /// <summary>
         /// Gets or set the title of a book.
         /// </summary>
-        public string Title {get; set;}
+        public string Title { get; set; }
         /// <summary>
         /// Gets or sets the author of a book.
         /// </summary>
-        public string AuthorName {get; set;}
+        public string AuthorName { get; set; }
         /// <summary>
         /// Gets or set the Interational Standard Book Number for a book.
         /// </summary>
-        public string Isbn {get; set;}
+        public string Isbn { get; set; }
         /// <summary>
         /// Gets or sets the price of a book.
         /// </summary>
-        public decimal Price {get; set;}
+        public decimal Price { get; set; }
         /// <summary>
         /// Gets or sets a boolean value to check if a book is on sale.
         /// </summary>
-        public bool IsBookOnSale {get; set;} = false;
+        public bool IsBookOnSale { get; set; } = false;
 
        /// <summary>
        /// Initializez new instance of a book
