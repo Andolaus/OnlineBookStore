@@ -8,7 +8,7 @@ namespace OnlineBookStore.Managers
     public class DiscountManager 
     {
         /// <summary>
-        /// Calculates discount if book is on sale.
+        /// Calculates 20% discount if book is on sale.
         /// </summary>
         /// <param name="book">The book to check if it's on sale.</param>
         /// <returns>Discounted price if sale.</returns>
