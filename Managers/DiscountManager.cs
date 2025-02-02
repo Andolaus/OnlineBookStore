@@ -17,7 +17,8 @@ namespace OnlineBookStore.Managers
         {
             if (book == null)
             {
-                throw new ArgumentNullException("Book cannot be null", nameof(book));
+                throw new ArgumentNullException(nameof(book), "Book cannot be null. " +
+                    "Please provide a valid book.");
             }
 
             if (book.IsBookOnSale)

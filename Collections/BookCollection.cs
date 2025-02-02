@@ -13,19 +13,21 @@ namespace OnlineBookStore.Collections
         /// <summary>
         /// Adds a book to the collection.
         /// </summary>
-        /// <param name="book">Book to add in collection</param>
-        /// <exception cref="ArgumentNullException">Exception thrown if book is null</exception>
-        /// <exception cref="ArgumentException">Exception thrown if a book with same ISBN already exist</exception>
+        /// <param name="book">Book to add in collection.</param>
+        /// <exception cref="ArgumentNullException">Exception thrown if book is null.</exception>
+        /// <exception cref="ArgumentException">Exception thrown if a book with same ISBN already exist.</exception>
         public void AddBook (Book book)
         {
             if (book == null)
             {
-                throw new ArgumentNullException(nameof(book), "Book cannot be null");
+                throw new ArgumentNullException(nameof(book), "Book cannot be null. " +
+                    "Please provide a valid book.");
             }
 
             if (_books.Any(b => b.Isbn == book.Isbn))
             {
-                throw new ArgumentException("Book with same ISBN already exists", nameof(book));
+                throw new ArgumentException(nameof(book), "Book with same ISBN already exist. " +
+                    "Please provide a another book.");
             }
 
             _books.Add(book);
@@ -34,19 +36,21 @@ namespace OnlineBookStore.Collections
         /// <summary>
         /// Removes a book from the book collection.
         /// </summary>
-        /// <param name="book">Book to remove from collection</param>
-        /// <exception cref="ArgumentNullException">Exception thrown if book is null</exception>
+        /// <param name="book">Book to remove from collection.</param>
+        /// <exception cref="ArgumentNullException">Exception thrown if book is null.</exception>
         /// <exception cref="ArgumentException">Exception thrown if doesn't exist in collection.</exception>
         public void RemoveBook (Book book)
         {
             if (book == null)
             {
-                throw new ArgumentNullException(nameof(book), "Book cannot be null");
+                throw new ArgumentNullException(nameof(book), "Book cannot be null. " +
+                    "Please provide a valid book.");
             }
 
             if (!_books.Contains(book))
             {
-                throw new ArgumentException("Book doesn't exist in collection, failed to remove book", nameof(book));
+                throw new ArgumentException(nameof(book), "Book does not exist in collection, failed to remove book " +
+                    "Please provide a valid book.");
             }
 
             _books.Remove(book);
@@ -71,27 +75,29 @@ namespace OnlineBookStore.Collections
         /// <summary>
         /// Finds a book by ISBN in the collection.
         /// </summary>
-        /// <param name="isbn">The ISBN number to use for searching</param>
+        /// <param name="isbn">The ISBN number to use for searching.</param>
         /// <returns>
         /// The book with the same ISBN number.
         /// </returns>
         /// <exception cref="ArgumentException">Thrown if ISBN is null or empty.</exception>
-        /// <exception cref="ArgumentException">Thrown if method can't find book with same ISBN</exception>
+        /// <exception cref="ArgumentException">Thrown if method can't find book with same ISBN.</exception>
         public Book FindBookByIsbn (string isbn) 
         {
             if (string.IsNullOrWhiteSpace(isbn))
             {
-                throw new ArgumentException("ISBN cannot be null or empty", nameof(isbn));
+                throw new ArgumentException(nameof(isbn), "ISBN cannot be null or empty. " +
+                    "Please provide a valid ISBN.");
             }
             
             return _books.FirstOrDefault(book => book.Isbn == isbn)
-                ?? throw new ArgumentException("Book with that ISBN not found", nameof(isbn));
+                ?? throw new ArgumentException(nameof(isbn), "Book with that ISBN does not exist. " +
+                    "Please provide a valid ISBN.");
         }
 
         /// <summary>
         /// Finds a book by title in the collection.
         /// </summary>
-        /// <param name="title">Title name used for searching the collection</param>
+        /// <param name="title">Title name used for searching the collection.</param>
         /// <returns>
         /// The book with the same title.
         /// </returns>
@@ -101,11 +107,13 @@ namespace OnlineBookStore.Collections
         {
             if (string.IsNullOrWhiteSpace(title))
             {
-                throw new ArgumentException("Title cannot be null or empty", nameof(title));
+                throw new ArgumentException(nameof(title), "Title cannot be null or empty. " +
+                    "Please provide a valid title.");
             }
 
             return _books.FirstOrDefault(book => book.Title == title)
-                ?? throw new ArgumentException("Book with that title does not exist", nameof(title));
+                ?? throw new ArgumentException(nameof(title), "Book with that title does not exist. " +
+                    "Please provide a valid title.");
         }
     }
 }

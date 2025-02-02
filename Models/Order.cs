@@ -53,18 +53,24 @@ namespace OnlineBookStore.Models
         /// <exception cref="ArgumentNullException">Thrown when Customer, Book or DiscountManager is null.</exception>
         public Order(Customer customer, Book book, DiscountManager discountManager)
         {   
-            if(customer == null)
+            if (customer == null)
             {
-                throw new ArgumentNullException("Customer cannot be null", nameof(customer));
+                throw new ArgumentNullException(nameof(customer), "Customer cannot be null. " +
+                    "Please provide a valid customer.");
             }
-            if(book == null)
+
+            if (book == null)
             {
-                throw new ArgumentNullException("Book cannot be null", nameof(book));
+                throw new ArgumentNullException(nameof(book), "Book cannot be null. " +
+                    "Please provide a valid book.");
             }
-            if(discountManager == null)
+
+            if (discountManager == null)
             {
-                throw new ArgumentNullException("Discount manager cannot be null", nameof(discountManager));
+                throw new ArgumentNullException(nameof(discountManager), "Discount manager cannot be null. " +
+                    "Please provide a valid discount manager.");
             }
+            
 
             CustomerID = customer.CustomerID;
             FirstName = customer.FirstName;

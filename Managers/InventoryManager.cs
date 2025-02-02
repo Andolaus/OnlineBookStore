@@ -21,17 +21,22 @@ namespace OnlineBookStore.Managers
         {
             if (string.IsNullOrWhiteSpace(isbn))
             {
-                throw new ArgumentException("ISBN number cannot be null or empty", nameof(isbn));
+                throw new ArgumentException(nameof(isbn), "ISBN number cannot be null or empty. " +
+                    "Please provide a valid ISBN number.");
             }
+
             if (quantity < 0)
             {
-                throw new ArgumentException("You have to add a positive quantity", nameof(quantity));
+                throw new ArgumentException(nameof(quantity), "You have to add a positive quantity number. " +
+                    "Please provide a valid quantity number.");
             }
+
             if (_bookInventory.ContainsKey(isbn))
             {
 
                 _bookInventory[isbn] += quantity;
             }
+
             else
             {
                 _bookInventory[isbn] = quantity;
@@ -50,22 +55,32 @@ namespace OnlineBookStore.Managers
         {
             if (string.IsNullOrWhiteSpace(isbn))
             {
-                throw new ArgumentException("ISBN number cannot be null or empty", nameof(isbn));
+                throw new ArgumentException(nameof(isbn), "ISBN number cannot be null or empty. " +
+                    "Please provide a valid ISBN number.");
             }
+
             if (quantity <= 0)
             {
-                throw new ArgumentException("Quantity must be higher than zero", nameof(quantity));
+                throw new ArgumentException(nameof(quantity), "Quantity must be higher than zero. " +
+                    "Please provide a valid quantity number.");
             }
+
             if (!_bookInventory.ContainsKey(isbn))
             {
-                throw new KeyNotFoundException("Book with that ISBN number does not exist in inventory");
+                throw new KeyNotFoundException("Book with that ISBN number does not exist in inventory. " +
+                    "Please provide a valid ISBN number.");
             }
+
             int availableQuantity = _bookInventory[isbn];
+
             if (availableQuantity < quantity)
             {
-                throw new InvalidOperationException($"Quantity to remove is higher than available quantity. Available quantity is: {availableQuantity}");
+                throw new InvalidOperationException("Quantity to remove is higher than available quantity. Available quantity is: " + 
+                $"{availableQuantity}. Please provide a valid quantity number.");
             }
+
             _bookInventory[isbn] -= quantity;
+
             if (_bookInventory[isbn] == 0)
             {
                 _bookInventory.Remove(isbn);
@@ -84,9 +99,11 @@ namespace OnlineBookStore.Managers
             {
                 return _bookInventory[isbn];
             }
+            
             else
             {
-                throw new KeyNotFoundException("Book with ISBN number does not exist in inventory");
+                throw new KeyNotFoundException("Book with that ISBN number does not exist in inventory. " +
+                    "Please provide a valid ISBN number.");
             }
         }
 

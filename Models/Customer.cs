@@ -43,23 +43,28 @@ namespace OnlineBookStore.Models
         {
             if(string.IsNullOrWhiteSpace(firstName))
             {
-                throw new ArgumentException("First name cannot be null or empty", nameof(firstName));
+                throw new ArgumentException(nameof(firstName), "First name cannot be null or empty. " +
+                    "Please provide a valid first name.");
             }
             if(middleName != null && string.IsNullOrWhiteSpace(middleName))
             {
-                throw new ArgumentException("Middle name cannot be empty", nameof(middleName));
+                throw new ArgumentException(nameof(middleName), "Middle name cannot be empty. " +
+                    "Please provide a valid middle name.");
             }
             if(string.IsNullOrWhiteSpace(lastName))
             {
-                throw new ArgumentException("Last name cannot be null or empty", nameof(lastName));
+                throw new ArgumentException(nameof(lastName), "Last name cannot be null or empty. " +
+                    "Please provide a valid last name.");
             }
             if(String.IsNullOrWhiteSpace(email) || !email.Contains("@"))
             {
-                throw new ArgumentException("Email cannot be null or empty and email must contain @", nameof(email));
+                throw new ArgumentException(nameof(email), "Email cannot be null or empty and must contain '@'. " +
+                    "Please provide a valid email.");
             }
             if(String.IsNullOrWhiteSpace(phoneNumber))
             {
-                throw new ArgumentException("Phone number cannot be null or empty", nameof(phoneNumber));
+                throw new ArgumentException(nameof(phoneNumber), "Phone number cannot be null or empty. " +
+                    "Please provide a valid phone number.");
             }
 
             CustomerID = Guid.NewGuid();
@@ -93,7 +98,6 @@ namespace OnlineBookStore.Models
         {
             return $"Customer ID: {CustomerID}\nName: {CustomerFullName()}\nEmail: {Email}\nPhone Number: {PhoneNumber}";
         }
-
   
     }
 }

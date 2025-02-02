@@ -27,31 +27,38 @@ namespace OnlineBookStore.Models
         public bool IsBookOnSale { get; set; } = false;
 
        /// <summary>
-       /// Initializez new instance of a book
+       /// Initializez new instance of a book.
        /// </summary>
-       /// <param name="title">Title of the book</param>
+       /// <param name="title">Title of the book.</param>
        /// <param name="authorName">Author name of the book.</param>
-       /// <param name="isbn">The International Standard Book Number for a book</param>
-       /// <param name="price">The price of the book</param>
-       /// <exception cref="ArgumentException">Throws argument when input fields are invalid</exception>
+       /// <param name="isbn">The International Standard Book Number for a book.</param>
+       /// <param name="price">The price of the book.</param>
+       /// <exception cref="ArgumentException">Throws argument exception when input fields are invalid.</exception>
         public Book(string title, string authorName, string isbn, decimal price)
         {
 
-        if(string.IsNullOrWhiteSpace(title))
+        if (string.IsNullOrWhiteSpace(title))
         {
-            throw new ArgumentException("Title cannot be null or empty", nameof(title));
+            throw new ArgumentException(nameof(title), "Title cannot be null or empty. " +
+                "Please provide a valid title.");
         }
-        if(string.IsNullOrWhiteSpace(authorName))
+
+        if (string.IsNullOrWhiteSpace(authorName))
         {
-            throw new ArgumentException("Author name cannot be null or empty", nameof(authorName));
+            throw new ArgumentException(nameof(authorName), "Author name cannot be null or empty. " +
+                "Please provide a valid author name.");
         }
-        if(string.IsNullOrWhiteSpace(isbn))
+
+        if (string.IsNullOrWhiteSpace(isbn))
         {
-            throw new ArgumentException("ISBN cannot be null or empty", nameof(isbn));
+            throw new ArgumentException(nameof(isbn), "ISBN cannot be null or empty. " +
+                "Please provide a valid ISBN.");
         }
-        if(price < 0)
+
+        if (price < 0)
         {
-            throw new ArgumentException("Price cannot be less than 0", nameof(price));
+            throw new ArgumentException(nameof(price), "Price cannot be negative. " +
+                "Please provide a valid price.");
         }
 
         Title = title; 
