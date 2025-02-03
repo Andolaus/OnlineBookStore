@@ -33,34 +33,38 @@ namespace OnlineBookStore.Models
         /// <summary>
         /// Initializez new instance of a customer.
         /// </summary>
-        /// <param name="firstName">Customer's first name</param>
-        /// <param name="lastName">Customer's last name</param>
-        /// <param name="email">Customer's email adress</param>
-        /// <param name="phoneNumber">Customer's phone number</param>
-        /// <param name="middleName">Customer's middlename</param>
+        /// <param name="firstName">Customer's first name.</param>
+        /// <param name="lastName">Customer's last name.</param>
+        /// <param name="email">Customer's email adress.</param>
+        /// <param name="phoneNumber">Customer's phone number.</param>
+        /// <param name="middleName">Customer's middlename.</param>
         /// <exception cref="ArgumentException">Throws exepction when input is not valid.</exception>
         public Customer(string firstName, string lastName, string email, string phoneNumber, string? middleName = null)
         {
-            if(string.IsNullOrWhiteSpace(firstName))
+            if (string.IsNullOrWhiteSpace(firstName))
             {
                 throw new ArgumentException(nameof(firstName), "First name cannot be null or empty. " +
                     "Please provide a valid first name.");
             }
-            if(middleName != null && string.IsNullOrWhiteSpace(middleName))
+
+            if (middleName != null && string.IsNullOrWhiteSpace(middleName))
             {
                 throw new ArgumentException(nameof(middleName), "Middle name cannot be empty. " +
                     "Please provide a valid middle name.");
             }
-            if(string.IsNullOrWhiteSpace(lastName))
+
+            if (string.IsNullOrWhiteSpace(lastName))
             {
                 throw new ArgumentException(nameof(lastName), "Last name cannot be null or empty. " +
                     "Please provide a valid last name.");
             }
-            if(String.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+
+            if (String.IsNullOrWhiteSpace(email) || !email.Contains("@"))
             {
                 throw new ArgumentException(nameof(email), "Email cannot be null or empty and must contain '@'. " +
                     "Please provide a valid email.");
             }
+            
             if(String.IsNullOrWhiteSpace(phoneNumber))
             {
                 throw new ArgumentException(nameof(phoneNumber), "Phone number cannot be null or empty. " +
