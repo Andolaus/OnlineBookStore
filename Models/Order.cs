@@ -70,7 +70,7 @@ namespace OnlineBookStore.Models
                 throw new ArgumentNullException(nameof(discountManager), "Discount manager cannot be null. " +
                     "Please provide a valid discount manager.");
             }
-            
+
 
             CustomerID = customer.CustomerID;
             FirstName = customer.FirstName;
@@ -86,7 +86,7 @@ namespace OnlineBookStore.Models
         /// <returns>A string representation of an order with customer information</returns>
         public override string ToString()
         {
-            return $"Order ID: {OrderID}\nCustomer: {FirstName} {LastName}\nEmail: {Email}\nPhone Number: {PhoneNumber}\nBook Title: {Book.Title}\nOrder Date: {OrderDate}\nOrder Amount: {OrderAmount}";
+            return $"Order ID: {OrderID}\nCustomer: {FirstName} {LastName}\nEmail: {Email}\nPhone Number: {PhoneNumber}\nBook Title: {Book.Title}\nOrder Date: {OrderDate}\nOrder Amount: {OrderAmount:C}";
         }
     }
 }
