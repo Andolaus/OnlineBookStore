@@ -64,7 +64,7 @@ namespace OnlineBookStore.Models
                 throw new ArgumentException(nameof(email), "Email cannot be null or empty and must contain '@'. " +
                     "Please provide a valid email.");
             }
-            
+
             if(String.IsNullOrWhiteSpace(phoneNumber))
             {
                 throw new ArgumentException(nameof(phoneNumber), "Phone number cannot be null or empty. " +
@@ -100,7 +100,7 @@ namespace OnlineBookStore.Models
         /// </returns>
         public override string ToString()
         {
-            return $"Customer ID: {CustomerID}\nName: {CustomerFullName()}\nEmail: {Email}\nPhone Number: {PhoneNumber}";
+            return $"Customer ID: {CustomerID}\nName: {CustomerFullName()}\nEmail: {Email}\nPhone Number: {PhoneNumber}\n";
         }
   
     }

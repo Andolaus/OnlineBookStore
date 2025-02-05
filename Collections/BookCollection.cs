@@ -102,8 +102,7 @@ namespace OnlineBookStore.Collections
         /// The book with the same title.
         /// </returns>
         /// <exception cref="ArgumentException">Throws when title is null or empty.</exception>
-        /// <exception cref="ArgumentException">Throws when input title doesn't exist.</exception>
-        public Book FindBookByTitle (string title)
+        public Book? FindBookByTitle (string title)
         {
             if (string.IsNullOrWhiteSpace(title))
             {
@@ -111,9 +110,9 @@ namespace OnlineBookStore.Collections
                     "Please provide a valid title.");
             }
 
-            return _books.FirstOrDefault(book => book.Title == title)
-                ?? throw new ArgumentException(nameof(title), "Book with that title does not exist. " +
-                    "Please provide a valid title.");
+            var book = _books.FirstOrDefault(book => book.Title == title);
+
+            return book;
         }
     }
 }

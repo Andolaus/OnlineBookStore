@@ -75,7 +75,7 @@ namespace OnlineBookStore.Models
         /// </returns>
         public override string ToString() 
         {
-            return $"Title: {Title}\n, Author: {AuthorName}\n, ISBN: {Isbn}\n, Price: {Price}\n, On Sale: {IsBookOnSale}";
+            return $"Title: {Title}\n, Author: {AuthorName}\n, ISBN: {Isbn}\n, Price: {Price}\n, On Sale: {IsBookOnSale}\n";
         }
 
     }
