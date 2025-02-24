@@ -1,7 +1,4 @@
-using OnlineBookStore.Managers;
-using OnlineBookStore.Models;
-
-namespace OnlineBookStore.Collections 
+namespace OnlineBookStore
 {
     /// <summary>
     /// A Class representing a collection of books in a online book store.

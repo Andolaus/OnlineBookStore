@@ -1,40 +1,40 @@
-namespace OnlineBookStore.Models
+namespace OnlineBookStore
 {
     /// <summary>
-    /// Class representing a book in a online book store.
+    /// An abstract base class representing a book in a online book store.
     /// </summary>
-    public class Book
+    public abstract class BaseBook
     {
         /// <summary>
-        /// Gets or set the title of a book.
+        /// Gets the title of a book.
         /// </summary>
-        public string Title { get; set; }
+        public string Title { get; }
         /// <summary>
-        /// Gets or sets the author of a book.
+        /// Gets or the author of a book.
         /// </summary>
-        public string AuthorName { get; set; }
+        public string AuthorName { get; }
         /// <summary>
-        /// Gets or set the Interational Standard Book Number for a book.
+        /// Gets the Interational Standard Book Number for a book.
         /// </summary>
-        public string Isbn { get; set; }
+        public string Isbn { get; }
         /// <summary>
-        /// Gets or sets the price of a book.
+        /// Gets the price of a book.
         /// </summary>
-        public decimal Price { get; set; }
+        public decimal Price { get; private set; }
         /// <summary>
         /// Gets or sets a boolean value to check if a book is on sale.
         /// </summary>
         public bool IsBookOnSale { get; set; } = false;
 
        /// <summary>
-       /// Initializez new instance of a book.
+       /// Initializes new instance of a book.
        /// </summary>
        /// <param name="title">Title of the book.</param>
        /// <param name="authorName">Author name of the book.</param>
        /// <param name="isbn">The International Standard Book Number for a book.</param>
        /// <param name="price">The price of the book.</param>
        /// <exception cref="ArgumentException">Throws argument exception when input fields are invalid.</exception>
-        public Book(string title, string authorName, string isbn, decimal price)
+        protected BaseBook(string title, string authorName, string isbn, decimal price)
         {
 
         if (string.IsNullOrWhiteSpace(title))
@@ -68,6 +68,22 @@ namespace OnlineBookStore.Models
         }
 
         /// <summary>
+        /// Sets the price of a book.
+        /// </summary>
+        /// <param name="price">The new price of a book instance.</param>
+        /// <exception cref="ArgumentException">Throws argument exception if price is lower or equal to zero.</exception>
+        public void SetPrice(decimal price)
+        {
+            if (price <= 0)
+            {
+                throw new ArgumentException(nameof(price), "Price cannot be negative or zero. " +
+                    "Please provide a valid price.");
+            }
+
+            Price = price;
+        }
+
+        /// <summary>
         /// Returns a description of a book with information about title, author, ISBN, price and if the book is on sale.
         /// </summary>
         /// <returns>
@@ -75,7 +91,7 @@ namespace OnlineBookStore.Models
         /// </returns>
         public override string ToString() 
         {
-            return $"Title: {Title}\n, Author: {AuthorName}\n, ISBN: {Isbn}\n, Price: {Price}\n, On Sale: {IsBookOnSale}\n";
+            return $"Title: {Title}\n, Author: {AuthorName}\n, ISBN: {Isbn}\n, Price: {Price:C}\n, On Sale: {IsBookOnSale}\n";
         }
 
     }

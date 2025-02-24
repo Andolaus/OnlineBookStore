@@ -1,4 +1,4 @@
-namespace OnlineBookStore.Models
+namespace OnlineBookStore
 {
     /// <summary>
     /// Class representing information about a customer.
@@ -85,7 +85,7 @@ namespace OnlineBookStore.Models
         /// <returns>
         /// Returns customer's full name as a string.
         /// </returns>
-        public string CustomerFullName() 
+        public string GetFullName() 
         {
           return MiddleName == null
             ? $"{FirstName} {LastName}"
@@ -100,7 +100,7 @@ namespace OnlineBookStore.Models
         /// </returns>
         public override string ToString()
         {
-            return $"Customer ID: {CustomerID}\nName: {CustomerFullName()}\nEmail: {Email}\nPhone Number: {PhoneNumber}\n";
+            return $"Customer ID: {CustomerID}\nName: {GetFullName()}\nEmail: {Email}\nPhone Number: {PhoneNumber}\n";
         }
   
     }

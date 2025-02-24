@@ -1,11 +1,10 @@
-﻿using OnlineBookStore.Managers;
-using OnlineBookStore.Collections;
-using OnlineBookStore.Models;
+﻿using OnlineBookStore;
 
 class Program 
 {
     static void Main(string[] args)
     {
+        /*
         // Lager nødvendige instanser for alle klassene.
         InventoryManager inventoryManager = new();
         DiscountManager discountManager = new();
@@ -70,5 +69,6 @@ class Program
         Order testOrdre = bookStoreManager.PurchaseBook(andreas, "978-0812513752");
 
         Console.WriteLine(testOrdre.ToString());
+        */
     }
 }

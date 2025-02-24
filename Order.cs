@@ -1,6 +1,4 @@
-using OnlineBookStore.Managers;
-
-namespace OnlineBookStore.Models
+namespace OnlineBookStore
 {
     /// <summary>
     /// A class representing an order for a book in a online book store.
@@ -34,7 +32,7 @@ namespace OnlineBookStore.Models
         /// <summary>
         /// Gets a book to use in a order.
         /// </summary>
-        public Book Book { get; }
+        public BaseBook Book { get; }
         /// <summary>
         /// Gets the date of an order.
         /// </summary>
@@ -51,7 +49,7 @@ namespace OnlineBookStore.Models
         /// <param name="book">The book being purchased.</param>
         /// <param name="discountManager">Manages discounts if there is a sale.</param>
         /// <exception cref="ArgumentNullException">Thrown when Customer, Book or DiscountManager is null.</exception>
-        public Order(Customer customer, Book book, DiscountManager discountManager)
+        public Order(Customer customer, BaseBook book, DiscountManager discountManager)
         {   
             if (customer == null)
             {

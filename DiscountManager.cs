@@ -1,6 +1,4 @@
-using OnlineBookStore.Models;
-
-namespace OnlineBookStore.Managers 
+namespace OnlineBookStore
 {
     /// <summary>
     /// Class representing a discount manager for a online book store.
@@ -13,7 +11,7 @@ namespace OnlineBookStore.Managers
         /// <param name="book">The book to check if it's on sale.</param>
         /// <returns>Discounted price if sale.</returns>
         /// <exception cref="ArgumentNullException">Throws if book is null.</exception>
-        public decimal CalculateDiscountedPrice(Book book)
+        public decimal CalculateDiscountedPrice(BaseBook book)
         {
             if (book == null)
             {

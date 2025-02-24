@@ -1,7 +1,4 @@
-using OnlineBookStore.Models;
-using OnlineBookStore.Collections;
-
-namespace OnlineBookStore.Managers
+namespace OnlineBookStore
 {
     /// <summary>
     /// Class managing inventory management, book searches, and processing orders in a online book store.
@@ -37,7 +34,7 @@ namespace OnlineBookStore.Managers
         /// <param name="quantity">Quantity to add in inventory.</param>
         /// <exception cref="ArgumentNullException">Thrown if book is null.</exception>
         /// <exception cref="ArgumentException">Thorwn if quantity is less than or equal to zero.</exception>
-        public void AddBook(Book book, int quantity)
+        public void AddBook(BaseBook? book, int quantity)
         {
             if (book == null)
             {
@@ -63,8 +60,8 @@ namespace OnlineBookStore.Managers
         /// The book found by title or ISBN.
         /// </returns>
         /// <exception cref="ArgumentException">Thrown if title or ISBN is empty or null.</exception>
-        /// <exception cref="KeyNotFoundException">Thrown if title or ISBN does not exist.</exception>
-        public Book FindBook(string titleOrIsbn) 
+        /// <exception cref="ArgumentException">Thrown if title or ISBN does not exist.</exception>
+        public BaseBook FindBook(string titleOrIsbn) 
         {
             if (string.IsNullOrWhiteSpace(titleOrIsbn))
             {
@@ -76,7 +73,7 @@ namespace OnlineBookStore.Managers
 
             if (book == null)
             {
-                throw new KeyNotFoundException("Book with that title or ISBN does not exist. " +
+                throw new ArgumentException("Book with that title or ISBN does not exist. " +
                 "Please provide a valid title or ISBN.");
             }
 
@@ -115,7 +112,7 @@ namespace OnlineBookStore.Managers
                 "Please try again later.");
             }
 
-            Book book = _bookCollection.FindBookByIsbn(isbn) ?? throw new KeyNotFoundException("Book with that ISBN does not exist. " +
+            BaseBook book = _bookCollection.FindBookByIsbn(isbn) ?? throw new KeyNotFoundException("Book with that ISBN does not exist. " +
             "Please provide a valid ISBN.");
 
             _inventoryManager.RemoveBookQuantityFromInventory(isbn, 1);

@@ -1,4 +1,4 @@
-namespace OnlineBookStore.Managers 
+namespace OnlineBookStore
 {
     /// <summary>
     /// A class that manages the inventory of books in the store.
@@ -81,9 +81,9 @@ namespace OnlineBookStore.Managers
 
             _bookInventory[isbn] -= quantity;
 
-            if (_bookInventory[isbn] == 0)
+            if (_bookInventory[isbn] < 0)
             {
-                _bookInventory.Remove(isbn);
+                _bookInventory[isbn] = 0;
             }
         }
 
