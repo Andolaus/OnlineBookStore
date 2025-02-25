@@ -5,7 +5,7 @@ namespace OnlineBookStore
     /// </summary>
     public class BookCollection 
     {
-        private readonly List<Book> _books = new();
+        private readonly List<BaseBook> _books = new();
 
         /// <summary>
         /// Adds a book to the collection.
@@ -13,7 +13,7 @@ namespace OnlineBookStore
         /// <param name="book">Book to add in collection.</param>
         /// <exception cref="ArgumentNullException">Exception thrown if book is null.</exception>
         /// <exception cref="ArgumentException">Exception thrown if a book with same ISBN already exist.</exception>
-        public void AddBook (Book book)
+        public void AddBook (BaseBook book)
         {
             if (book == null)
             {
@@ -36,7 +36,7 @@ namespace OnlineBookStore
         /// <param name="book">Book to remove from collection.</param>
         /// <exception cref="ArgumentNullException">Exception thrown if book is null.</exception>
         /// <exception cref="ArgumentException">Exception thrown if doesn't exist in collection.</exception>
-        public void RemoveBook (Book book)
+        public void RemoveBook (BaseBook book)
         {
             if (book == null)
             {
@@ -67,7 +67,7 @@ namespace OnlineBookStore
         /// <returns>
         /// A copy of the list of books in the collection.
         /// </returns>
-        public List<Book> GetBooks () => new(_books);
+        public List<BaseBook> GetBooks () => new(_books);
 
         /// <summary>
         /// Finds a book by ISBN in the collection.
@@ -78,7 +78,7 @@ namespace OnlineBookStore
         /// </returns>
         /// <exception cref="ArgumentException">Thrown if ISBN is null or empty.</exception>
         /// <exception cref="ArgumentException">Thrown if method can't find book with same ISBN.</exception>
-        public Book FindBookByIsbn (string isbn) 
+        public BaseBook FindBookByIsbn (string isbn) 
         {
             if (string.IsNullOrWhiteSpace(isbn))
             {
@@ -99,7 +99,7 @@ namespace OnlineBookStore
         /// The book with the same title.
         /// </returns>
         /// <exception cref="ArgumentException">Throws when title is null or empty.</exception>
-        public Book? FindBookByTitle (string title)
+        public BaseBook? FindBookByTitle (string title)
         {
             if (string.IsNullOrWhiteSpace(title))
             {

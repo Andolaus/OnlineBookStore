@@ -34,6 +34,5 @@ namespace OnlineBookStore
         /// <param name="transactionId">The transaction identifier.</param>
         /// <returns>A string representing the payment status</returns>
         string GetPaymentStatus(Guid transactionId);
-
     }
 }
