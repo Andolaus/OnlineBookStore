@@ -3,7 +3,7 @@ namespace OnlineBookStore
     /// <summary>
     /// A class representing an ebook in a online book store.
     /// </summary>
-    public class Ebook : BaseBook
+    public class Ebook : DigitalBook
     {
         /// <summary>
         /// Gets the file format of the ebook.

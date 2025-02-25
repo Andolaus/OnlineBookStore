@@ -3,7 +3,7 @@ namespace OnlineBookStore
     /// <summary>
     /// A class representing an audio book in a online book store.
     /// </summary>
-    public class AudioBook : BaseBook
+    public class AudioBook : DigitalBook
     {
         /// <summary>
         /// Gets the length of the audio book.
